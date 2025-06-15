@@ -82,6 +82,8 @@ logging will be in the `/logs` folder which each run having its own folder and a
 
 ✅ Processed 100 file(s) using 'ocr_t2' in 81.88 seconds with 6 core(s).
 
+✅ Processed 100 file(s) using 'ocr_t3' in 76.44 seconds with 6 core(s).
 
+✅ Processed 100 file(s) using 'ocr_t4' in 79.50 seconds with 6 core(s).
 
-
+✅ Processed 100 file(s) using 'ocr_t5' in 85.13 seconds with 6 core(s).
