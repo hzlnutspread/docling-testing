@@ -87,3 +87,10 @@ logging will be in the `/logs` folder which each run having its own folder and a
 ✅ Processed 100 file(s) using 'ocr_t4' in 79.50 seconds with 6 core(s).
 
 ✅ Processed 100 file(s) using 'ocr_t5' in 85.13 seconds with 6 core(s).
+
+## conclusion
+basically use as many cores as you can, threading doesnt really matter unless you use too many
+
+4 threads is the sweet spot for docling
+
+For context im using Macbook M4 Pro where theres 6 performance cores 
