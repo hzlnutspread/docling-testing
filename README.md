@@ -54,19 +54,32 @@ logging will be in the `/logs` folder which each run having its own folder and a
 
 ## benchmarking
 ✅ Processed 100 file(s) using 'ocr_t1' in 390.79 seconds with 1 core(s).
-✅ Processed 100 file(s) using 'ocr_t1' in 195.68 seconds with 2 core(s).
-✅ Processed 100 file(s) using 'ocr_t1' in 147.46 seconds with 3 core(s).
-✅ Processed 100 file(s) using 'ocr_t1' in 107.22 seconds with 4 core(s).
+
+✅ Processed 100 file(s) using 'ocr_t1' in 195.68 seconds with 2 core(s). 
+
+✅ Processed 100 file(s) using 'ocr_t1' in 147.46 seconds with 3 core(s). 
+
+✅ Processed 100 file(s) using 'ocr_t1' in 107.22 seconds with 4 core(s). 
+
 ✅ Processed 100 file(s) using 'ocr_t1' in 89.27 seconds with 5 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t1' in 82.25 seconds with 6 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t1' in 82.10 seconds with 7 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t1' in 82.92 seconds with 8 core(s).
 
+
 ✅ Processed 100 file(s) using 'ocr_t2' in 361.69 seconds with 1 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t2' in 190.10 seconds with 2 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t2' in 132.23 seconds with 3 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t2' in 103.86 seconds with 4 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t2' in 87.48 seconds with 5 core(s).
+
 ✅ Processed 100 file(s) using 'ocr_t2' in 81.88 seconds with 6 core(s).
 
 
