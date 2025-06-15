@@ -6,36 +6,38 @@ This repo benchmarks the performance of Docling across different configurations.
 ```
 python -m venv venv
 ```
+
 <br>
 
 2. Activate the virtual environment:
 ```
 source venv/bin/activate
 ```
+
 <br>
 
 3. Install requirements:
 ```
 pip install -r requirements.txt
 ```
-<br>
 
+<br>
 
 ##  Running the Pipeline
 Setup required folders:
 ```
 mkdir input_docs logs outputs
 ```
-<br>
 
+<br>
 
 Add test documents to the input folder:
 - These are simple test files. Replace them with more complex documents for realistic results.
 ```
 cp test_documents/* input_docs/
 ```
-<br>
 
+<br>
 
 Run the pipeline:
 ```
@@ -44,9 +46,8 @@ python src/main.py --input_dir input_docs --variant ocr_t6 --max_cores 4
 - Use --variant to set number of threads (ocr_t1 to ocr_t6)
 
 - Use --max_cores to set number of parallel processes
-<br>
-<br>
 
+<br>
 
 ##  Outputs & Logging
 Processed outputs go to: outputs/run_<timestamp>/[file_name]/
@@ -54,6 +55,8 @@ Processed outputs go to: outputs/run_<timestamp>/[file_name]/
 
 Logs are saved to: logs/run_<timestamp>/
 - Includes per-file logs and summary.log
+
+<br>
 
 ##  Benchmarking Results
 
@@ -75,7 +78,7 @@ ocr_t1 (1 thread)
 ✅ 7 cores →  82.10s
 
 ✅ 8 cores →  82.92s
-<br>
+
 <br>
 
 ocr_t2 (2 threads)
@@ -91,7 +94,7 @@ ocr_t2 (2 threads)
 ✅ 5 cores →  87.48s
 
 ✅ 6 cores →  81.88s
-<br>
+
 <br>
 
 ocr_t3 to t5 (6 cores)
@@ -101,7 +104,7 @@ ocr_t3 to t5 (6 cores)
 ✅ ocr_t4 → 79.50s
 
 ✅ ocr_t5 → 85.13s
-<br>
+
 <br>
 
 ### File Count Scaling (6 cores, 4 threads - ocr_t4)
@@ -121,8 +124,9 @@ ocr_t3 to t5 (6 cores)
 
 
 -  Time per file drops logarithmically and stabilizes around 0.8s/file beyond ~30–40 files.
+
 <br>
-<br>
+
 
 ## Conclusion
 - Use as many cores as possible — scaling is strong up to 6–8.
@@ -136,4 +140,5 @@ ocr_t3 to t5 (6 cores)
 --- 
 
 <br>
+
  Tested on MacBook M4 Pro (6 performance cores)
