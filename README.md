@@ -1,96 +1,139 @@
-# docling testing
+#  Docling Testing
+This repo benchmarks the performance of Docling across different configurations.
 
-this repo aims to test capabiltiies of docling
-
-## installing
-
-create venv
+##  Installation
+1. Create a virtual environment:
 ```
 python -m venv venv
 ```
+<br>
 
-activate venv
+2. Activate the virtual environment:
 ```
-source venv/bin/Activate
+source venv/bin/activate
 ```
+<br>
 
-install requirements 
+3. Install requirements:
 ```
 pip install -r requirements.txt
 ```
+<br>
 
-## running
 
-create the required folders
+##  Running the Pipeline
+Setup required folders:
 ```
-mkdir input_docs
-mkdir logs
-mkdir outputs
+mkdir input_docs logs outputs
 ```
+<br>
 
-copy the test documents into the `--input_docs` folder
+
+Add test documents to the input folder:
+- These are simple test files. Replace them with more complex documents for realistic results.
 ```
 cp test_documents/* input_docs/
 ```
+<br>
 
+
+Run the pipeline:
 ```
 python src/main.py --input_dir input_docs --variant ocr_t6 --max_cores 4
 ```
+- Use --variant to set number of threads (ocr_t1 to ocr_t6)
 
-set `--variant` to set number of threads used by docling ocr e.g for 6 threads set it to:
-- `ocr_t6` 
-
-set `--max_cores` to see changes in performance
- 
-
-## outputs and logging
-outputs will be in the `/outputs` folder with each file having a folder associated with itself. Each folder will contain the default docling outputs
-- .doctags
-- .json
-- .md
-- .txt
-
-logging will be in the `/logs` folder which each run having its own folder and an overall `summary.log` file.
-
-## benchmarking
-✅ Processed 100 file(s) using 'ocr_t1' in 390.79 seconds with 1 core(s).
-
-✅ Processed 100 file(s) using 'ocr_t1' in 195.68 seconds with 2 core(s). 
-
-✅ Processed 100 file(s) using 'ocr_t1' in 147.46 seconds with 3 core(s). 
-
-✅ Processed 100 file(s) using 'ocr_t1' in 107.22 seconds with 4 core(s). 
-
-✅ Processed 100 file(s) using 'ocr_t1' in 89.27 seconds with 5 core(s).
-
-✅ Processed 100 file(s) using 'ocr_t1' in 82.25 seconds with 6 core(s).
-
-✅ Processed 100 file(s) using 'ocr_t1' in 82.10 seconds with 7 core(s).
-
-✅ Processed 100 file(s) using 'ocr_t1' in 82.92 seconds with 8 core(s).
+- Use --max_cores to set number of parallel processes
+<br>
+<br>
 
 
-✅ Processed 100 file(s) using 'ocr_t2' in 361.69 seconds with 1 core(s).
+##  Outputs & Logging
+Processed outputs go to: outputs/run_<timestamp>/[file_name]/
+- Includes .doctags, .json, .md, .txt
 
-✅ Processed 100 file(s) using 'ocr_t2' in 190.10 seconds with 2 core(s).
+Logs are saved to: logs/run_<timestamp>/
+- Includes per-file logs and summary.log
 
-✅ Processed 100 file(s) using 'ocr_t2' in 132.23 seconds with 3 core(s).
+##  Benchmarking Results
 
-✅ Processed 100 file(s) using 'ocr_t2' in 103.86 seconds with 4 core(s).
+###  Threads vs Cores (100 files )
+ocr_t1 (1 thread)
 
-✅ Processed 100 file(s) using 'ocr_t2' in 87.48 seconds with 5 core(s).
+✅ 1 core → 390.79s
 
-✅ Processed 100 file(s) using 'ocr_t2' in 81.88 seconds with 6 core(s).
+✅ 2 cores → 195.68s
 
-✅ Processed 100 file(s) using 'ocr_t3' in 76.44 seconds with 6 core(s).
+✅ 3 cores → 147.46s
 
-✅ Processed 100 file(s) using 'ocr_t4' in 79.50 seconds with 6 core(s).
+✅ 4 cores → 107.22s
 
-✅ Processed 100 file(s) using 'ocr_t5' in 85.13 seconds with 6 core(s).
+✅ 5 cores →  89.27s
 
-## conclusion
-basically use as many cores as you can, threading doesnt really matter unless you use too many
+✅ 6 cores →  82.25s
 
-4 threads is the sweet spot for docling
+✅ 7 cores →  82.10s
 
-For context im using Macbook M4 Pro where theres 6 performance cores 
+✅ 8 cores →  82.92s
+<br>
+<br>
+
+ocr_t2 (2 threads)
+
+✅ 1 core → 361.69s
+
+✅ 2 cores → 190.10s
+
+✅ 3 cores → 132.23s
+
+✅ 4 cores → 103.86s
+
+✅ 5 cores →  87.48s
+
+✅ 6 cores →  81.88s
+<br>
+<br>
+
+ocr_t3 to t5 (6 cores)
+
+✅ ocr_t3 → 76.44s
+
+✅ ocr_t4 → 79.50s
+
+✅ ocr_t5 → 85.13s
+<br>
+<br>
+
+### File Count Scaling (6 cores, 4 threads - ocr_t4)
+| Number of Files | Total Time (s) | Time per File (s) |
+| --------------- | -------------- | ----------------- |
+| 4               | 8.39           | 2.10              |
+| 8               | 11.63          | 1.45              |
+| 12              | 12.80          | 1.07              |
+| 16              | 15.94          | 1.00              |
+| 20              | 19.49          | 0.97              |
+| 24              | 20.69          | 0.86              |
+| 32              | 26.63          | 0.83              |
+| 36              | 29.51          | 0.82              |
+| 40              | 32.26          | 0.81              |
+| 100             | 79.50          | 0.80              |
+| 200             | 165.68         | 0.83              |
+
+
+-  Time per file drops logarithmically and stabilizes around 0.8s/file beyond ~30–40 files.
+<br>
+<br>
+
+## Conclusion
+- Use as many cores as possible — scaling is strong up to 6–8.
+
+- 4 threads per process is optimal for Docling.
+
+- Thread count beyond 4 has diminishing returns.
+
+- Current benchmarking used simple, one-page files — expect more variance on complex data.
+
+--- 
+
+<br>
+ Tested on MacBook M4 Pro (6 performance cores)
